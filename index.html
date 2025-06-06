@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti, Mi Amor 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffa8a8, #ffb3b3);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Corazones flotantes */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            animation: float 6s infinite linear;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            transform: scale(0.9);
+            animation: scaleIn 1s ease-out forwards;
+            z-index: 2;
+        }
+        
+        @keyframes scaleIn {
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        .photo-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .couple-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: photoGlow 3s ease-in-out infinite alternate;
+            transition: transform 0.3s ease;
+        }
+        
+        .couple-photo:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes photoGlow {
+            0% {
+                box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+            }
+            100% {
+                box-shadow: 0 10px 40px rgba(255, 105, 180, 0.5);
+            }
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .phrase-container {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .love-phrase {
+            font-size: 1.3rem;
+            color: #fff;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+            font-style: italic;
+            max-width: 90%;
+        }
+        
+        .love-phrase.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .click-button {
+            background: linear-gradient(45deg, #e63946, #f77f00);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .click-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(230, 57, 70, 0.6);
+        }
+        
+        .click-button:active {
+            transform: translateY(0);
+        }
+        
+        .click-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .click-button:hover::before {
+            left: 100%;
+        }
+        
+        .music-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+        
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .sparkle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            animation: sparkle 2s infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .love-phrase {
+                font-size: 1.1rem;
+            }
+            
+            .click-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .couple-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .love-phrase {
+                font-size: 1rem;
+            }
+            
+            .couple-photo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="music-control" onclick="toggleMusic()" id="musicBtn">🎵</button>
+        
+        <div class="photo-container">
+            <img src="Captura de pantalla 2025-06-05 223838.png" alt="Nuestra foto especial" class="couple-photo">
+        </div>
+        
+        <h1 class="title">Para Ti, Mi Amor ❤️</h1>
+        <div class="phrase-container">
+            <p class="love-phrase" id="lovePhrase">Haz clic para descubrir lo que siento por ti...</p>
+        </div>
+        <button class="click-button" onclick="showNextPhrase()">
+            Descubre mi corazón 💕
+        </button>
+    </div>
+
+    <!-- Audio para la música de fondo -->
+    <audio id="backgroundMusic" loop>
+        <source src="la-distancia.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        const lovePhrases = [
+            "Eres la melodía más hermosa que mi corazón ha escuchado jamás 🎵",
+            "En tus ojos encuentro mi hogar, mi paz, mi infinito ✨",
+            "Cada latido de mi corazón pronuncia tu nombre con amor 💗",
+            "Eres mi razón de ser, mi sueño hecho realidad 🌟",
+            "Tu sonrisa ilumina hasta los días más oscuros de mi alma ☀️",
+            "Contigo he descubierto que el amor verdadero sí existe 💝",
+            "Eres mi complemento perfecto, mi otra mitad del alma 🌙",
+            "Tu amor es el regalo más hermoso que la vida me ha dado 🎁",
+            "Cada momento a tu lado es un verso de nuestra historia de amor 📖",
+            "Eres mi presente perfecto y mi futuro soñado 🌈",
+            "Tu voz es mi canción favorita, tu risa mi sinfonía 🎼",
+            "En tus brazos he encontrado mi lugar en el universo 🌌",
+            "Eres la respuesta a todas las oraciones de mi corazón 🙏",
+            "Tu amor me ha enseñado a volar sin alas 🦋",
+            "Contigo, cada día es una nueva página de nuestra historia 💕",
+            "Eres mi inspiración, mi musa, mi todo ❤️",
+            "Tu amor es mi refugio en las tormentas de la vida 🌺",
+            "Eres la estrella que guía mi destino hacia la felicidad ⭐",
+            "Te amo más allá de las palabras, más allá del tiempo 💖",
+            "Eres y serás siempre el amor de mi vida 👑"
+        ];
+
+        let currentPhraseIndex = 0;
+        let musicPlaying = false;
+
+        function showNextPhrase() {
+            const phraseElement = document.getElementById('lovePhrase');
+            
+            // Animación de salida
+            phraseElement.classList.remove('show');
+            
+            setTimeout(() => {
+                // Cambiar frase
+                phraseElement.textContent = lovePhrases[currentPhraseIndex];
+                currentPhraseIndex = (currentPhraseIndex + 1) % lovePhrases.length;
+                
+                // Animación de entrada
+                phraseElement.classList.add('show');
+                
+                // Crear efectos especiales
+                createSparkles();
+                createHearts();
+            }, 400);
+        }
+
+        function createSparkles() {
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.textContent = '✨';
+                    sparkle.className = 'sparkle';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.top = Math.random() * 100 + '%';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.textContent = '💖';
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('backgroundMusic');
+            const btn = document.getElementById('musicBtn');
+            
+            if (musicPlaying) {
+                music.pause();
+                btn.textContent = '🎵';
+                musicPlaying = false;
+            } else {
+                music.play().catch(e => {
+                    console.log('No se pudo reproducir la música automáticamente');
+                });
+                btn.textContent = '🔇';
+                musicPlaying = true;
+            }
+        }
+
+        // Crear corazones automáticamente
+        setInterval(createHearts, 3000);
+
+        // Mostrar primera frase al cargar
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('lovePhrase').classList.add('show');
+            }, 1000);
+        });
+
+        // Intentar reproducir música al primer clic
+        document.addEventListener('click', function() {
+            if (!musicPlaying) {
+                const music = document.getElementById('backgroundMusic');
+                music.play().catch(e => console.log('Música no disponible'));
+                musicPlaying = true;
+                document.getElementById('musicBtn').textContent = '🔇';
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
